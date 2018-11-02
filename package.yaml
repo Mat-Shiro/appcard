@@ -1,4 +1,4 @@
-name:    aulahaskell
+name:    appcard
 version: "0.0.0"
 
 dependencies:
@@ -45,6 +45,7 @@ dependencies:
 - time
 - case-insensitive
 - wai
+- http-types
 
 # The library contains all of our application code. The executable
 # defined below is just a thin wrapper.
@@ -66,7 +67,7 @@ library:
 
 # Runnable executable for our application
 executables:
-  aulahaskell:
+  appcard:
     main: main.hs
     source-dirs: app
     ghc-options:
@@ -74,7 +75,7 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - aulahaskell
+    - appcard
     when:
     - condition: flag(library-only)
       buildable: false
