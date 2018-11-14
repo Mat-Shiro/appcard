@@ -11,8 +11,8 @@ import Text.Julius
 import Import
 import Prelude
 
-widgetFooter :: Widget
-widgetFooter = $(whamletFile "templates/footer.hamlet")
+widgetBootstrapLinks :: Widget
+widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
 
 getHomeR :: Handler Html
 getHomeR = do 
