@@ -1,3 +1,0 @@
-<form action=@{ProdutoR} method=post enctype=#{enctype}>
-    ^{widgetForm}
-    <input type="submit" value=_{MsgSend}>

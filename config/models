@@ -24,6 +24,6 @@ Sugestao json
     deriving Show
 
 Ranking json
-    rank        Text
+    rank        Int
     plaid       PlayerId
     deriving Show

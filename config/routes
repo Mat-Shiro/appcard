@@ -5,7 +5,9 @@
 
 /     HomeR  GET
 
-/player                     PlayerR        GET POST
+/player                     PlayerR         GET POST
 
-/login                      LoginR         GET POST
-/logout                     LogoutR        POST
+/login                      LoginR          GET POST
+/logout                     LogoutR         POST
+
+/influencias                InfluenciasR    GET POST
