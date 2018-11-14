@@ -5,3 +5,7 @@ h1{
 .jumbotron {
   margin-top: 25px;
 }
+
+#signin {
+  margin-right: 5px;
+}
