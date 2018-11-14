@@ -1,0 +1,9 @@
+$maybe msg <- mensagem
+    <div class="alert alert-danger">
+        #{msg}
+
+
+<form action=@{LoginR} method=post enctype=#{enctype}>
+    ^{widgetForm}
+    <input type="submit" value="Login">
+    

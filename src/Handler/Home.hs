@@ -11,10 +11,15 @@ import Text.Julius
 import Import
 import Prelude
 
+widgetFooter :: Widget
+widgetFooter = $(whamletFile "templates/footer.hamlet")
+
 getHomeR :: Handler Html
-getHomeR = do
-		defaultLayout $ do 
-			addStylesheet $ StaticR css_bootstrap_css
-			toWidgetHead $(juliusFile "templates/homepage.julius")
-			toWidget $(luciusFile "templates/homepage.lucius")
-			$(whamletFile "templates/homepage.hamlet")
+getHomeR = do 
+    mensagem <- getMessage
+    logado <- lookupSession "_PLA"
+    defaultLayout $ do 
+        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        toWidgetHead $(juliusFile "templates/home.julius")
+        toWidget $(luciusFile "templates/home.lucius")
+        $(whamletFile "templates/home.hamlet")
