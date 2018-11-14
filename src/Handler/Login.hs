@@ -10,6 +10,9 @@ import Text.Lucius
 import Text.Julius
 import Import
 
+widgetBootstrapLinks :: Widget
+widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
+
 formLogin :: Form (Text,Text)
 formLogin = renderBootstrap $ (,) 
     <$> areq emailField "E-mail: " Nothing
@@ -20,7 +23,8 @@ getLoginR = do
     (widgetForm, enctype) <- generateFormPost formLogin
     mensagem <- getMessage
     defaultLayout $ do 
-        addStylesheet $ StaticR css_bootstrap_css
+        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        toWidget $(luciusFile "templates/login.lucius")
         $(whamletFile "templates/login.hamlet")
     
 postLoginR :: Handler Html 

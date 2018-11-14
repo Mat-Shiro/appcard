@@ -1,9 +1,32 @@
-$maybe msg <- mensagem
-    <div class="alert alert-danger">
-        #{msg}
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        
+        <span class="navbar-brand">Gamble
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+        
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href=@{HomeR}>
+                        Página Inicial
+                
+                <li class="nav-item">
+                    <a class="nav-link" href=@{InfluenciasR}>
+                        Influências
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Super Influências
+                
+<div class="jumbotron">
+    $maybe msg <- mensagem
+        <div class="alert alert-danger">
+            #{msg}
 
-
-<form action=@{LoginR} method=post enctype=#{enctype}>
-    ^{widgetForm}
-    <input type="submit" value="Login">
-    
+    <form action=@{LoginR} method=post enctype=#{enctype}>
+        ^{widgetForm}
+        <input type="submit" value="Login">
+        
+^{widgetBootstrapLinks}

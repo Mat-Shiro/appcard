@@ -10,6 +10,9 @@ import Text.Lucius
 import Text.Julius
 import Import
 
+widgetBootstrapLinks :: Widget
+widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
+
 formPlayer :: Form (Player,Text)
 formPlayer = renderBootstrap $ (,) 
     <$> (Player 
@@ -24,7 +27,8 @@ getPlayerR = do
     (widgetForm, enctype) <- generateFormPost formPlayer
     mensagem <- getMessage
     defaultLayout $ do 
-        addStylesheet $ StaticR css_bootstrap_css
+        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        toWidget $(luciusFile "templates/player.lucius")
         $(whamletFile "templates/player.hamlet")
     
 postPlayerR :: Handler Html 
