@@ -11,3 +11,4 @@
 /logout                     LogoutR         POST
 
 /influencias                InfluenciasR    GET POST
+/superInfluencias           SuperR          GET POST
