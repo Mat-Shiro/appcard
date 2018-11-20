@@ -5,6 +5,9 @@
 
 /     HomeR  GET
 
+/admin                      AdminR          GET
+/admin/#PlayerId/apagar     ApagarR         POST
+
 /player                     PlayerR         GET POST
 
 /login                      LoginR          GET POST

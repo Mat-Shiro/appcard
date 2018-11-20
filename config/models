@@ -2,7 +2,7 @@ Player
     nome        Text
     email       Text
     senha       Text
-    deriving Show
+    deriving Show Read
 
 Influencias json
     nome      Text

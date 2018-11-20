@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: a48860cff0e86f080fe656188c6a74a872e7cb8240708efdf894ceb81466558c
+-- hash: 6cab54fdb1893eb3dcdf2993a9c5e4a9ec644c17af40bfc2dfe5f5bdf9e8f051
 
 name:           appcard
 version:        0.0.0
@@ -24,6 +24,7 @@ library
   exposed-modules:
       Application
       Foundation
+      Handler.Admin
       Handler.Common
       Handler.Home
       Handler.Influencias

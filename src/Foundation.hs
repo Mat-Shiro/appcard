@@ -10,6 +10,7 @@ module Foundation where
 import Import.NoFoundation
 import Database.Persist.Sql (ConnectionPool, runSqlPool)
 import Yesod.Core.Types     (Logger)
+import Prelude              (read)
 
 data App = App
     { appSettings    :: AppSettings
@@ -31,6 +32,7 @@ instance Yesod App where
     isAuthorized HomeR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
     isAuthorized PlayerR _ = return Authorized
+    isAuthorized AdminR _ = ehAdmin
     isAuthorized _ _ = ehPlayer
     
     
@@ -46,6 +48,18 @@ instance RenderMessage App FormMessage where
 
 instance HasHttpManager App where
     getHttpManager = appHttpManager
+
+ehAdmin :: Handler AuthResult
+ehAdmin = do 
+    logado <- lookupSession "_PLA"
+    case logado of 
+        Just stringPlayer -> do 
+            player <- return $ read $ unpack stringPlayer
+            if (playerNome player) == "admin" then do 
+                return Authorized
+            else 
+                return $ Unauthorized "Acesso negado!"
+        Nothing -> return AuthenticationRequired
 
 ehPlayer :: Handler AuthResult
 ehPlayer = do
