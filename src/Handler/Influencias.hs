@@ -16,8 +16,8 @@ widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
 formInfluencias :: Form Influencias
 formInfluencias = renderBootstrap $ Influencias
     <$> areq textField "Nome: " Nothing
-    <*> areq textField "Ação Ativa: " Nothing
-    <*> areq textField "Ação Passiva: " Nothing
+    <*> aopt textField "Ação Ativa: " Nothing
+    <*> aopt textField "Ação Passiva: " Nothing
     
 getInfluenciasR :: Handler Html
 getInfluenciasR = do

@@ -5,9 +5,9 @@ Player
     deriving Show
 
 Influencias json
-    nome        Text
-    ativa       Text
-    passiva     Text
+    nome      Text
+    ativa     Text Maybe
+    passiva   Text Maybe
     deriving Show
 
 Super json
