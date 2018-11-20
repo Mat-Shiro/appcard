@@ -12,13 +12,30 @@
                     <a class="nav-link" href=@{HomeR}>
                         Página Inicial
                 
-                <li class="nav-item">
-                    <a class="nav-link" href=@{InfluenciasR}>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Influências
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href=@{InfluenciasR}>Cadastrar Influência
+                        <a class="dropdown-item" href="#">Listar Influências
                 
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Super Influências
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Cadastrar Super Influência
+                        <a class="dropdown-item" href="#">Listar Super Influências
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sugestões
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Enviar uma Sugestão
+                        <a class="dropdown-item" href="#">Listar suas Sugestões
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        Super Influências
+                        Ranking
                 
             $maybe _ <- logado
                 <form class="form-inline my-2 my-lg-0" action=@{LogoutR} method="post">
