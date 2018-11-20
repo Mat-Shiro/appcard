@@ -18,8 +18,8 @@ Super json
 
 Sugestao json
     nome        Text
-    ativa       Text
-    passiva     Text
+    ativa       Text Maybe
+    passiva     Text Maybe
     plaid       PlayerId
     deriving Show
 
