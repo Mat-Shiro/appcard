@@ -23,7 +23,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Super Influências
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href=@{SuperR}>Cadastrar Super Influência
+                        <a class="dropdown-item active" href=@{SuperR}>Cadastrar Super Influência
                         <a class="dropdown-item" href="#">Listar Super Influências
 
                 <li class="nav-item dropdown">
@@ -37,13 +37,11 @@
                     <a class="nav-link" href="#">
                         Ranking
                 
+            <form class="form-inline my-2 my-lg-0" action=@{LogoutR} method="post">
+                <button class="btn btn-sm btn-outline-secondary" type="submit">Logout
+
 <div class="jumbotron">
-    $maybe msg <- mensagem
-        <div class="alert alert-danger">
-            #{msg}
-
-
-    <form action=@{PlayerR} method=post enctype=#{enctype}>
+    <form action=@{SuperR} method=post enctype=#{enctype}>
         ^{widgetForm}
         <input type="submit" value=_{MsgSend}>
 

@@ -23,7 +23,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Super Influências
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Cadastrar Super Influência
+                        <a class="dropdown-item" href=@{SuperR}>Cadastrar Super Influência
                         <a class="dropdown-item" href="#">Listar Super Influências
 
                 <li class="nav-item dropdown">
