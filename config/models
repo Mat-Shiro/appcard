@@ -12,8 +12,8 @@ Influencias json
 
 Super json
     nome        Text
-    ativa       Text
-    passiva     Text
+    ativa       Text Maybe
+    passiva     Text Maybe
     deriving Show
 
 Sugestao json
