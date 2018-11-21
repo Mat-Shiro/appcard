@@ -15,4 +15,5 @@
 
 /influencias                InfluenciasR    GET POST
 /superInfluencias           SuperR          GET POST
-/ranking                    RankingR        GET POST
+/ranking                    RankingR        GET
+/ranking/#RankingId         RankR           POST

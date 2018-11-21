@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6cab54fdb1893eb3dcdf2993a9c5e4a9ec644c17af40bfc2dfe5f5bdf9e8f051
+-- hash: 3d78f0f4090ebfcf5f32d85dff2ef1bfcfa33a6873119d62393aabc4c4b22bda
 
 name:           appcard
 version:        0.0.0
@@ -30,6 +30,7 @@ library
       Handler.Influencias
       Handler.Login
       Handler.Player
+      Handler.Ranking
       Handler.Super
       Import
       Import.NoFoundation
