@@ -33,9 +33,12 @@
                         <a class="dropdown-item" href="#">Enviar uma Sugestão
                         <a class="dropdown-item" href="#">Listar suas Sugestões
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Ranking
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Atualizar Ranking
+                        <a class="dropdown-item" href="#">Listar Ranks
                 
 <div class="jumbotron">
     $maybe msg <- mensagem
