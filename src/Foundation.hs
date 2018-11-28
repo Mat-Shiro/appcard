@@ -35,6 +35,7 @@ instance Yesod App where
     
     --ROTAS ADMIN
     isAuthorized InfluenciasR getInfluenciasR = ehAdmin
+    isAuthorized SuperR getSuperR = ehAdmin
     isAuthorized AdminR _ = ehAdmin
     
     --ROTAS USUÁRIO
