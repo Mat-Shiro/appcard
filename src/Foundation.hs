@@ -32,7 +32,12 @@ instance Yesod App where
     isAuthorized HomeR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
     isAuthorized PlayerR _ = return Authorized
+    
+    --ROTAS ADMIN
+    isAuthorized InfluenciasR getInfluenciasR = ehAdmin
     isAuthorized AdminR _ = ehAdmin
+    
+    --ROTAS USUÁRIO
     isAuthorized _ _ = ehPlayer
     
     

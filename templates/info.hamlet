@@ -1,9 +1,0 @@
-<h1>
-    #{produtoNome produto}
-    
-<div>
-    #{produtoPreco produto}
-    
-<div>
-
-    #{produtoQtEstoque produto}
