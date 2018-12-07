@@ -12,6 +12,7 @@
 
 /login                      LoginR          GET POST
 /logout                     LogoutR         POST
+/adm/logout                 LogoutAdmR      POST
 
 /influencias                InfluenciasR    GET POST
 /superInfluencias           SuperR          GET POST

@@ -33,14 +33,12 @@ instance Yesod App where
     isAuthorized LoginR _ = return Authorized
     isAuthorized PlayerR _ = return Authorized
     
-    --ROTAS ADMIN
     isAuthorized InfluenciasR getInfluenciasR = ehAdmin
     isAuthorized SuperR getSuperR = ehAdmin
     isAuthorized AdminR _ = ehAdmin
+    isAuthorized LogoutAdmR _ = ehAdmin
     
-    --ROTAS USUÁRIO
     isAuthorized _ _ = ehPlayer
-    
     
 
 instance YesodPersist App where
@@ -57,15 +55,20 @@ instance HasHttpManager App where
 
 ehAdmin :: Handler AuthResult
 ehAdmin = do 
-    logado <- lookupSession "_PLA"
-    case logado of 
-        Just stringPlayer -> do 
-            player <- return $ read $ unpack stringPlayer
-            if (playerNome player) == "admin" then do 
-                return Authorized
-            else 
-                return $ Unauthorized "Acesso negado!"
-        Nothing -> return AuthenticationRequired
+    player <- lookupSession "_PLA"
+    case player of
+        Just _ -> return $ Unauthorized "Acesso negado!"
+        Nothing -> do
+            logado <- lookupSession "_ADM"
+            case logado of 
+                Just stringPlayer -> do 
+                    player <- return $ read $ unpack stringPlayer
+                    if (playerNome player) == "admin" then do 
+                        return Authorized
+                    else 
+                        return $ Unauthorized "Acesso negado!"
+                Nothing -> return AuthenticationRequired
+    
 
 ehPlayer :: Handler AuthResult
 ehPlayer = do

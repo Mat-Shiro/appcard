@@ -18,6 +18,7 @@ getHomeR :: Handler Html
 getHomeR = do 
     mensagem <- getMessage
     logado <- lookupSession "_PLA"
+    admin <- lookupSession "_ADM"
     defaultLayout $ do 
         addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         toWidgetHead $(juliusFile "templates/home.julius")

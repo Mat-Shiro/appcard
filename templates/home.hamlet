@@ -16,14 +16,16 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Influências
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href=@{InfluenciasR}>Cadastrar Influência
-                        <a class="dropdown-item" href="#">Listar Influências
+                        $maybe _ <- admin
+                            <a class="dropdown-item" href=@{InfluenciasR}>Cadastrar Influência
+                            <a class="dropdown-item" href="#">Listar Influências
+                        $nothing
+                            <a class="dropdown-item" href="#">Listar Influências
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Super Influências
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href=@{SuperR}>Cadastrar Super Influência
                         <a class="dropdown-item" href="#">Listar Super Influências
 
                 <li class="nav-item dropdown">
@@ -37,18 +39,23 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Ranking
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Atualizar Ranking
                         <a class="dropdown-item" href="#">Listar Ranks
                 
             $maybe _ <- logado
                 <form class="form-inline my-2 my-lg-0" action=@{LogoutR} method="post">
                     <button class="btn btn-sm btn-outline-secondary" type="submit">Logout
             $nothing
-                <form class="form-inline my-2 my-lg-0" action=@{PlayerR} method="get" id="signin">
-                    <button class="btn btn-outline-success" type="submit">Cadatre-se
-                        
-                <form class="form-inline my-2 my-lg-0" action=@{LoginR} method="get">
-                    <button class="btn btn-outline-secondary" type="submit">Login
+                $maybe _ <- admin
+                    <form class="form-inline my-2 my-lg-0" action=@{LogoutAdmR} method="post">
+                        <button class="btn btn-sm btn-outline-secondary" type="submit">Logout
+                $nothing
+                    <form class="form-inline my-2 my-lg-0" action=@{PlayerR} method="get" id="signin">
+                        <button class="btn btn-outline-success" type="submit">Cadatre-se
+                            
+                    <form class="form-inline my-2 my-lg-0" action=@{LoginR} method="get">
+                        <button class="btn btn-outline-secondary" type="submit">Login
+                    
+            
                     
                 
 <div class="jumbotron">

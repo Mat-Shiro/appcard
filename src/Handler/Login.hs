@@ -32,7 +32,7 @@ postLoginR = do
     ((res,_),_) <- runFormPost formLogin
     case res of 
         FormSuccess ("admin@admin.com", "admin123") -> do
-            setSession "_PLA" (pack $ show $ Player "admin" "admin@admin.com" "")
+            setSession "_ADM" (pack $ show $ Player "admin" "admin@admin.com" "")
             redirect AdminR
         FormSuccess (email,senha) -> do
             logado <- runDB $ selectFirst [PlayerEmail ==. email,
@@ -56,4 +56,9 @@ postLoginR = do
 postLogoutR :: Handler Html
 postLogoutR = do 
     deleteSession "_PLA"
+    redirect HomeR
+    
+postLogoutAdmR :: Handler Html
+postLogoutAdmR = do 
+    deleteSession "_ADM"
     redirect HomeR

@@ -1,0 +1,18 @@
+Host
+ec2-23-21-147-71.compute-1.amazonaws.com
+Database
+d80munlmq98o7p
+User
+aruqhbpkcjaghk
+Port
+5432
+Password
+3f56cc290465e70d1eb7ee7b0fbc5afc3b8b440c6bcfb118e9cd418683b1580c
+URI
+postgres://aruqhbpkcjaghk:3f56cc290465e70d1eb7ee7b0fbc5afc3b8b440c6bcfb118e9cd418683b1580c@ec2-23-21-147-71.compute-1.amazonaws.com:5432/d80munlmq98o7p
+Heroku CLI
+heroku pg:psql postgresql-transparent-46174 --app appyesod1
+
+
+
+psql -h ec2-23-21-147-71.compute-1.amazonaws.com -U aruqhbpkcjaghk -d d80munlmq98o7p
