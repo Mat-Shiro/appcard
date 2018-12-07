@@ -18,3 +18,4 @@
 /superInfluencias           SuperR          GET POST
 /ranking                    RankingR        GET
 /ranking/#RankingId         RankR           POST
+/sugestao/#PlayerId         SugestaoR       GET POST

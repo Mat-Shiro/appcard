@@ -17,10 +17,10 @@ Super json
     deriving Show
 
 Sugestao json
+    plaid       PlayerId
     nome        Text
     ativa       Text Maybe
     passiva     Text Maybe
-    plaid       PlayerId
     deriving Show
 
 Ranking json
