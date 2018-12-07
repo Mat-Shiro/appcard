@@ -26,20 +26,31 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Super Influências
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Listar Super Influências
+                        $maybe _ <- admin
+                            <a class="dropdown-item" href=@{SuperR}>Cadastrar Influência
+                            <a class="dropdown-item" href="#">Listar Super Influências
+                        $nothing
+                            <a class="dropdown-item" href="#">Listar Super Influências
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sugestões
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Enviar uma Sugestão
-                        <a class="dropdown-item" href="#">Listar suas Sugestões
+                        $maybe _ <- admin
+                            <a class="dropdown-item" href="#">Listar todas Sugestões
+                        $nothing
+                            <a class="dropdown-item" href="#">Enviar uma Sugestão
+                            <a class="dropdown-item" href="#">Listar suas Sugestões
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Ranking
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Listar Ranks
+                        $maybe _ <- admin
+                            <a class="dropdown-item" href="#">Atualizar Ranking
+                            <a class="dropdown-item" href="#">Listar Ranks
+                        $nothing
+                            <a class="dropdown-item" href="#">Listar Ranks
                 
             $maybe _ <- logado
                 <form class="form-inline my-2 my-lg-0" action=@{LogoutR} method="post">
