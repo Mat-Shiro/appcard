@@ -19,36 +19,9 @@ getHomeR :: Handler Html
 getHomeR = do 
     mensagem <- getMessage
     admin <- lookupSession "_ADM"
-    case admin of
-        Just _ -> do 
-            defaultLayout $ do 
-                addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-                toWidgetHead $(juliusFile "templates/homeAdmin.julius")
-                toWidget $(luciusFile "templates/homeAdmin.lucius")
-                $(whamletFile "templates/homeAdmin.hamlet")
-        Nothing -> do
-            logado <- lookupSession "_PLA"
-            case logado of 
-                Just sessionPlayer -> do 
-                    dados <- return $ read $ unpack sessionPlayer
-                    player <- runDB $ selectFirst [PlayerEmail ==. (playerEmail dados), PlayerSenha ==. (playerSenha dados)] []
-                    case player of
-                        Just (Entity plaid _) -> do
-                            pid <- return $ plaid
-                            defaultLayout $ do 
-                                addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-                                toWidgetHead $(juliusFile "templates/homeLogged.julius")
-                                toWidget $(luciusFile "templates/homeLogged.lucius")
-                                $(whamletFile "templates/homeLogged.hamlet")
-                        Nothing -> do
-                            defaultLayout $ do 
-                                addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-                                toWidgetHead $(juliusFile "templates/home.julius")
-                                toWidget $(luciusFile "templates/home.lucius")
-                                $(whamletFile "templates/home.hamlet")
-                Nothing -> do
-                    defaultLayout $ do 
-                        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-                        toWidgetHead $(juliusFile "templates/home.julius")
-                        toWidget $(luciusFile "templates/home.lucius")
-                        $(whamletFile "templates/home.hamlet")
+    logado <- lookupSession "_PLA"
+    defaultLayout $ do 
+        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        toWidgetHead $(juliusFile "templates/home.julius")
+        toWidget $(luciusFile "templates/home.lucius")
+        $(whamletFile "templates/home.hamlet")

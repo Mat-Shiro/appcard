@@ -33,6 +33,7 @@ instance Yesod App where
     isAuthorized LoginR _ = return Authorized
     isAuthorized LogoutR _ = return Authorized
     isAuthorized PlayerR _ = return Authorized
+    isAuthorized PainelR getPainelR = return Authorized
     
     isAuthorized InfluenciasR getInfluenciasR = ehAdmin
     isAuthorized SuperR getSuperR = ehAdmin
