@@ -1,0 +1,11 @@
+h1{
+    color:blue;
+}
+
+.jumbotron {
+  margin-top: 25px;
+}
+
+#signin {
+  margin-right: 5px;
+}
