@@ -56,22 +56,8 @@
                         $nothing
                             <a class="dropdown-item" href="#">Listar Ranks
                 
-            $maybe _ <- logado
-                <form class="form-inline my-2 my-lg-0" action=@{LogoutR} method="post">
-                    <button class="btn btn-sm btn-outline-secondary" type="submit">Logout
-            $nothing
-                $maybe _ <- admin
-                    <form class="form-inline my-2 my-lg-0" action=@{LogoutAdmR} method="post">
-                        <button class="btn btn-sm btn-outline-secondary" type="submit">Logout
-                $nothing
-                    <form class="form-inline my-2 my-lg-0" action=@{PlayerR} method="get" id="signin">
-                        <button class="btn btn-outline-success" type="submit">Cadatre-se
-                            
-                    <form class="form-inline my-2 my-lg-0" action=@{LoginR} method="get">
-                        <button class="btn btn-outline-secondary" type="submit">Login
-                    
-            
-                    
+            <form class="form-inline my-2 my-lg-0" action=@{LogoutR} method="post">
+                <button class="btn btn-sm btn-outline-secondary" type="submit">Logout
                 
 <div class="jumbotron">
     $maybe msg <- mensagem

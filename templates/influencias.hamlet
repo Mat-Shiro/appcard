@@ -39,7 +39,7 @@
                         <a class="dropdown-item" href="#">Atualizar Ranking
                         <a class="dropdown-item" href="#">Listar Ranks
                 
-            <form class="form-inline my-2 my-lg-0" action=@{LogoutAdmR} method="post">
+            <form class="form-inline my-2 my-lg-0" action=@{LogoutR} method="post">
                 <button class="btn btn-sm btn-outline-secondary" type="submit">Logout
 
 <div class="jumbotron">
