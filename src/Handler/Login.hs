@@ -9,6 +9,7 @@ module Handler.Login where
 import Text.Lucius
 import Text.Julius
 import Import
+import Database.Persist.Sql
 
 widgetBootstrapLinks :: Widget
 widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
@@ -55,10 +56,7 @@ postLoginR = do
         
 postLogoutR :: Handler Html
 postLogoutR = do 
+    deleteSession "_ADM"
     deleteSession "_PLA"
     redirect HomeR
     
-postLogoutAdmR :: Handler Html
-postLogoutAdmR = do 
-    deleteSession "_ADM"
-    redirect HomeR

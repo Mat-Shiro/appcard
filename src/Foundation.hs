@@ -31,12 +31,12 @@ instance Yesod App where
     authRoute _ = Just LoginR
     isAuthorized HomeR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
+    isAuthorized LogoutR _ = return Authorized
     isAuthorized PlayerR _ = return Authorized
     
     isAuthorized InfluenciasR getInfluenciasR = ehAdmin
     isAuthorized SuperR getSuperR = ehAdmin
     isAuthorized AdminR _ = ehAdmin
-    isAuthorized LogoutAdmR _ = ehAdmin
     
     isAuthorized _ _ = ehPlayer
     
@@ -60,9 +60,12 @@ ehAdmin = do
         Just _ -> return $ Unauthorized "Acesso negado!"
         Nothing -> do
             logado <- lookupSession "_ADM"
+            print logado
             case logado of 
                 Just stringPlayer -> do 
+                    print stringPlayer
                     player <- return $ read $ unpack stringPlayer
+                    print player
                     if (playerNome player) == "admin" then do 
                         return Authorized
                     else 

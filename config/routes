@@ -12,10 +12,13 @@
 
 /login                      LoginR          GET POST
 /logout                     LogoutR         POST
-/adm/logout                 LogoutAdmR      POST
 
 /influencias                InfluenciasR    GET POST
+/influencias/all            InfluenciasAllR GET
+
 /superInfluencias           SuperR          GET POST
+
 /ranking                    RankingR        GET
 /ranking/#RankingId         RankR           POST
+
 /sugestao/#PlayerId         SugestaoR       GET POST
