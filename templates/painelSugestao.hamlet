@@ -1,0 +1,70 @@
+<div class="navbar-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        
+        <span class="navbar-brand">Gamble
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon">
+        
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href=@{HomeR}>
+                        Página Inicial
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Influências
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Listar Influências
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Super Influências
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Listar Super Influências
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Sugestões
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ranking
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Listar Ranks
+                
+            <form class="form-inline my-2 my-lg-0" action=@{PlayerR} method="get" id="signin">
+                <button class="btn btn-outline-success" type="submit">Cadatre-se
+                        
+            <form class="form-inline my-2 my-lg-0" action=@{LoginR} method="get">
+                <button class="btn btn-outline-secondary" type="submit">Login
+
+<div class="jumbotron">
+    <div class="card text-center">
+        <div class="card-header">
+            Suas Sugestões
+        <div class="card-body">
+            <h5 class="card-title">
+                Listar suas Sugestões
+            <p class="card-text">
+                Veja aqui uma página com todas as suas sugestões enviadas
+            <a href="#" class="btn btn-primary">
+                Ver
+        <div class="card-footer text-muted">
+    
+    <br>
+    
+    <div class="card text-center">
+        <div class="card-header">
+            Nova Sugestão
+        <div class="card-body">
+            <h5 class="card-title">
+                Enviar uma Sugestão
+            <p class="card-text">
+                Você pode clicar no botão abaixo para enviar uma sugestão para uma nova Influência
+            <a href="#" class="btn btn-primary">
+                Enviar sugestão
+        <div class="card-footer text-muted">
+
+^{widgetBootstrapLinks}

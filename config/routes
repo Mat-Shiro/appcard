@@ -21,4 +21,5 @@
 /ranking                    RankingR        GET
 /ranking/#RankingId         RankR           POST
 
+/sugestao                   PainelR         GET
 /sugestao/#PlayerId         SugestaoR       GET POST
