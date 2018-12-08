@@ -6,8 +6,8 @@ Player
 
 Influencias json
     nome      Text
-    ativa     Text Maybe
-    passiva   Text Maybe
+    ativa     Text
+    passiva   Text
     deriving Show
 
 Super json
