@@ -1,0 +1,22 @@
+<div class="jumbotron">
+    <table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            <th>
+                Ativa
+            <th>
+                Passiva
+    <tbody>
+        $forall (Entity iid influencia) <- influencias
+            <tr>
+                <td>
+                    <a href="#">
+                        #{influenciasNome influencia}
+                <td>
+                    #{influenciasAtiva influencia}
+                <td>
+                    #{influenciasPassiva influencia}
+
+^{widgetBootstrapLinks}

@@ -16,8 +16,8 @@ widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
 formInfluencias :: Form Influencias
 formInfluencias = renderBootstrap $ Influencias
     <$> areq textField "Nome: " Nothing
-    <*> aopt textField "Ação Ativa: " Nothing
-    <*> aopt textField "Ação Passiva: " Nothing
+    <*> areq textField "Ação Ativa: " Nothing
+    <*> areq textField "Ação Passiva: " Nothing
     
 getInfluenciasR :: Handler Html
 getInfluenciasR = do
@@ -38,3 +38,11 @@ postInfluenciasR = do
             iid <- runDB $ insert influencias
             redirect HomeR
         _ -> redirect HomeR
+        
+getInfluenciasAllR :: Handler Html
+getInfluenciasAllR = do
+    influencias <- runDB $ selectList [] [Asc InfluenciasNome]
+    defaultLayout $ do
+        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        toWidget $(luciusFile "templates/influenciasAll.lucius")
+        $(whamletFile "templates/influenciasAll.hamlet")
