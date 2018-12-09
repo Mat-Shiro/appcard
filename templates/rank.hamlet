@@ -1,3 +1,4 @@
+(ATUALIZAR)
 <div class="navbar-wrapper">
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
         
@@ -16,60 +17,34 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Influências
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href=@{InfluenciasR}>Cadastrar Influência
                         <a class="dropdown-item" href="#">Listar Influências
                 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Super Influências
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href=@{SuperR}>Cadastrar Super Influência
                         <a class="dropdown-item" href="#">Listar Super Influências
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sugestões
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Listar todas Sugestões
+                        <a class="dropdown-item active" href="#">Enviar uma Sugestão
+                        <a class="dropdown-item" href="#">Listar suas Sugestões
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Ranking
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Atualizar Ranking
                         <a class="dropdown-item" href="#">Listar Ranks
                 
             <form class="form-inline my-2 my-lg-0" action=@{LogoutR} method="post">
                 <button class="btn btn-sm btn-outline-secondary" type="submit">Logout
-                
+
 <div class="jumbotron">
-    <table class="table">
-               <thead>
-                    <tr>
-                        <th>
-                            ID
-                        <th>
-                            NOME
-                        <th>
-                            E-MAIL
-                        <th>
-                            Rankear
-                        <th>
-                            Deletar
-                <tbody>
-                    $forall (Entity plaid player) <- players
-                        <tr>
-                            <td>
-                                #{fromSqlKey plaid}
-                            <td>
-                                #{playerNome player}
-                            <td>
-                                #{playerEmail player}
-                            <td>
-                                <form action=@{RankR plaid} method="get">
-                                    <button type="submit"> Rankear player
-                            <td>
-                                <form action=@{ApagarR plaid} method="post">
-                                    <input type="submit" value="X">
+    Rankeando Player #{playerNome player}
+    <form action=@{RankR plaid} method=post enctype=#{enctype}>
+        ^{widgetForm}
+        <input type="submit" value=_{MsgSend}>
 
 ^{widgetBootstrapLinks}

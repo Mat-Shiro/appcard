@@ -24,6 +24,7 @@ Sugestao json
     deriving Show
 
 Ranking json
-    rank        Int
     plaid       PlayerId
+    rank        Int
+    pontos      Int
     deriving Show

@@ -20,9 +20,9 @@
 /superInfluencias/all       SuperAllR           GET
 
 /ranking                    RankingR            GET
-/ranking/#RankingId         RankR               POST
+/ranking/#PlayerId          RankR               GET POST
 
 /sugestao                   PainelR             GET
 /sugestao/#PlayerId         SugestaoR           GET POST
-/!sugestoes/all              SugestoesAllR       GET
+/!sugestoes/all             SugestoesAllR       GET
 /sugestoes/#PlayerId        SugestoesPlayerR    GET

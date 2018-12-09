@@ -39,6 +39,7 @@ instance Yesod App where
     isAuthorized InfluenciasR getInfluenciasR = ehAdmin
     isAuthorized SuperR getSuperR = ehAdmin
     isAuthorized SugestoesAllR getSugestoesAllR = ehAdmin
+    isAuthorized (RankR _) _ = ehAdmin
     isAuthorized AdminR _ = ehAdmin
     
     isAuthorized LogoutR _ = usuarioLogado
