@@ -18,8 +18,8 @@ widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
 formSugestao :: PlayerId -> Form Sugestao
 formSugestao plaid = renderBootstrap $ Sugestao plaid
     <$> areq textField "Nome: " Nothing
-    <*> aopt textField "Ação Ativa: " Nothing
-    <*> aopt textField "Ação Passiva: " Nothing
+    <*> areq textField "Ação Ativa: " Nothing
+    <*> areq textField "Ação Passiva: " Nothing
     
 getSugestaoR :: PlayerId -> Handler Html
 getSugestaoR plaid = do
@@ -77,3 +77,11 @@ getPainelR = do
                         addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
                         toWidget $(luciusFile "templates/painelSugestao.lucius")
                         $(whamletFile "templates/painelSugestao.hamlet")
+                        
+getSugestoesAllR :: Handler Html
+getSugestoesAllR = do
+    sugestoes <- runDB $ selectList [] [Asc SugestaoId]
+    defaultLayout $ do
+        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        toWidget $(luciusFile "templates/sugestoesAllAdm.lucius")
+        $(whamletFile "templates/sugestoesAllAdm.hamlet")

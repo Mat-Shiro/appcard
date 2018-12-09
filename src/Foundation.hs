@@ -39,6 +39,7 @@ instance Yesod App where
     
     isAuthorized InfluenciasR getInfluenciasR = ehAdmin
     isAuthorized SuperR getSuperR = ehAdmin
+    isAuthorized SugestoesAllR getSugestoesAllR = ehAdmin
     isAuthorized AdminR _ = ehAdmin
     
     isAuthorized _ _ = ehPlayer
@@ -63,12 +64,9 @@ ehAdmin = do
         Just _ -> return $ Unauthorized "Acesso negado!"
         Nothing -> do
             logado <- lookupSession "_ADM"
-            print logado
             case logado of 
                 Just stringPlayer -> do 
-                    print stringPlayer
                     player <- return $ read $ unpack stringPlayer
-                    print player
                     if (playerNome player) == "admin" then do 
                         return Authorized
                     else 
