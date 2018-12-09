@@ -31,7 +31,6 @@ instance Yesod App where
     authRoute _ = Just LoginR
     isAuthorized HomeR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
-    isAuthorized LogoutR _ = return Authorized
     isAuthorized PlayerR _ = return Authorized
     isAuthorized PainelR getPainelR = return Authorized
     isAuthorized InfluenciasAllR getInfluenciasRAllR = return Authorized
@@ -42,7 +41,8 @@ instance Yesod App where
     isAuthorized SugestoesAllR getSugestoesAllR = ehAdmin
     isAuthorized AdminR _ = ehAdmin
     
-    isAuthorized _ _ = ehPlayer
+    isAuthorized LogoutR _ = usuarioLogado
+    isAuthorized _ _ = usuarioLogado
     
 
 instance YesodPersist App where
@@ -80,3 +80,14 @@ ehPlayer = do
     case logado of
         Just _ -> return Authorized
         Nothing -> return AuthenticationRequired
+        
+usuarioLogado :: Handler AuthResult
+usuarioLogado = do
+    admin <- lookupSession "_ADM"
+    case admin of
+        Just _ -> return Authorized
+        Nothing -> do
+            player <- lookupSession "_PLA"
+            case player of
+                Just _ -> return Authorized
+                Nothing -> return AuthenticationRequired

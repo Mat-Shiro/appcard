@@ -85,3 +85,11 @@ getSugestoesAllR = do
         addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         toWidget $(luciusFile "templates/sugestoesAllAdm.lucius")
         $(whamletFile "templates/sugestoesAllAdm.hamlet")
+        
+getSugestoesPlayerR :: PlayerId -> Handler Html
+getSugestoesPlayerR plaid = do
+    sugestoes <- runDB $ selectList [SugestaoPlaid ==. plaid] [Desc SugestaoId]
+    defaultLayout $ do
+        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        toWidget $(luciusFile "templates/sugestoesAllPlayer.lucius")
+        $(whamletFile "templates/sugestoesAllPlayer.hamlet")

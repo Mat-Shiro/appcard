@@ -5,23 +5,24 @@
 
 /     HomeR  GET
 
-/admin                      AdminR          GET
-/admin/#PlayerId/apagar     ApagarR         POST
+/admin                      AdminR              GET
+/admin/#PlayerId/apagar     ApagarR             POST
 
-/player                     PlayerR         GET POST
+/player                     PlayerR             GET POST
 
-/login                      LoginR          GET POST
-/logout                     LogoutR         POST
+/login                      LoginR              GET POST
+/logout                     LogoutR             POST
 
-/influencias                InfluenciasR    GET POST
-/influencias/all            InfluenciasAllR GET
+/influencias                InfluenciasR        GET POST
+/influencias/all            InfluenciasAllR     GET
 
-/superInfluencias           SuperR          GET POST
-/superInfluencias/all       SuperAllR       GET
+/superInfluencias           SuperR              GET POST
+/superInfluencias/all       SuperAllR           GET
 
-/ranking                    RankingR        GET
-/ranking/#RankingId         RankR           POST
+/ranking                    RankingR            GET
+/ranking/#RankingId         RankR               POST
 
-/sugestao                   PainelR         GET
-/sugestao/#PlayerId         SugestaoR       GET POST
-/sugestoes/all              SugestoesAllR   GET
+/sugestao                   PainelR             GET
+/sugestao/#PlayerId         SugestaoR           GET POST
+/!sugestoes/all              SugestoesAllR       GET
+/sugestoes/#PlayerId        SugestoesPlayerR    GET

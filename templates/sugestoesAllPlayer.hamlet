@@ -1,0 +1,21 @@
+<div class="jumbotron">
+    <table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            <th>
+                Ativa
+            <th>
+                Passiva
+    <tbody>
+        $forall (Entity sid sugestao) <- sugestoes
+            <tr>
+                <td>
+                    #{sugestaoNome sugestao}
+                <td>
+                    #{sugestaoAtiva sugestao}
+                <td>
+                    #{sugestaoPassiva sugestao}
+
+^{widgetBootstrapLinks}
