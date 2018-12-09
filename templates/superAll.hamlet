@@ -1,0 +1,22 @@
+<div class="jumbotron">
+    <table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>
+                Nome
+            <th>
+                Ativa
+            <th>
+                Passiva
+    <tbody>
+        $forall (Entity sid super) <- supers
+            <tr>
+                <td>
+                    <a href="#">
+                        #{superNome super}
+                <td>
+                    #{superAtiva super}
+                <td>
+                    #{superPassiva super}
+
+^{widgetBootstrapLinks}

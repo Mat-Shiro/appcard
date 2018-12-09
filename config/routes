@@ -17,6 +17,7 @@
 /influencias/all            InfluenciasAllR GET
 
 /superInfluencias           SuperR          GET POST
+/superInfluencias/all       SuperAllR       GET
 
 /ranking                    RankingR        GET
 /ranking/#RankingId         RankR           POST

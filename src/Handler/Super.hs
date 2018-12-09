@@ -16,8 +16,8 @@ widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
 formSuper :: Form Super
 formSuper = renderBootstrap $ Super
     <$> areq textField "Nome: " Nothing
-    <*> aopt textField "Ação Ativa: " Nothing
-    <*> aopt textField "Ação Passiva: " Nothing
+    <*> areq textField "Ação Ativa: " Nothing
+    <*> areq textField "Ação Passiva: " Nothing
     
 getSuperR :: Handler Html
 getSuperR = do
@@ -38,3 +38,11 @@ postSuperR = do
             iid <- runDB $ insert super
             redirect HomeR
         _ -> redirect HomeR
+        
+getSuperAllR :: Handler Html
+getSuperAllR = do
+    supers <- runDB $ selectList [] [Asc SuperNome]
+    defaultLayout $ do
+        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        toWidget $(luciusFile "templates/superAll.lucius")
+        $(whamletFile "templates/superAll.hamlet")
