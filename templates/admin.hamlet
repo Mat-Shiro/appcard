@@ -44,32 +44,32 @@
                 
 <div class="jumbotron">
     <table class="table">
-               <thead>
-                    <tr>
-                        <th>
-                            ID
-                        <th>
-                            NOME
-                        <th>
-                            E-MAIL
-                        <th>
-                            Rankear
-                        <th>
-                            Deletar
-                <tbody>
-                    $forall (Entity plaid player) <- players
-                        <tr>
-                            <td>
-                                #{fromSqlKey plaid}
-                            <td>
-                                #{playerNome player}
-                            <td>
-                                #{playerEmail player}
-                            <td>
-                                <form action=@{RankR plaid} method="get">
-                                    <button type="submit"> Rankear player
-                            <td>
-                                <form action=@{ApagarR plaid} method="post">
-                                    <input type="submit" value="X">
+       <thead>
+            <tr>
+                <th>
+                    ID
+                <th>
+                    NOME
+                <th>
+                    E-MAIL
+                <th>
+                    Rankear
+                <th>
+                    Deletar
+        <tbody>
+            $forall (Entity plaid player) <- players
+                <tr>
+                    <td>
+                        #{fromSqlKey plaid}
+                    <td>
+                        #{playerNome player}
+                    <td>
+                        #{playerEmail player}
+                    <td>
+                        <form action=@{RankR plaid} method="get">
+                            <button type="submit"> Rankear player
+                    <td>
+                        <form action=@{ApagarR plaid} method="post">
+                            <input type="submit" value="X">
 
 ^{widgetBootstrapLinks}

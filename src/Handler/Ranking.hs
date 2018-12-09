@@ -42,9 +42,11 @@ postRankR plaid = do
             |]
             redirect HomeR
         _ -> redirect HomeR
-    
+
 getRankingR :: Handler Html
 getRankingR = do
-    defaultLayout $ do 
+    ranking <- runDB $ selectList [] [Asc RankingRank]
+    defaultLayout $ do
         addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        toWidget $(luciusFile "templates/ranking.lucius")
         $(whamletFile "templates/ranking.hamlet")
