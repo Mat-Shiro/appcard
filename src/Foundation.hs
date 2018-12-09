@@ -34,6 +34,8 @@ instance Yesod App where
     isAuthorized LogoutR _ = return Authorized
     isAuthorized PlayerR _ = return Authorized
     isAuthorized PainelR getPainelR = return Authorized
+    isAuthorized InfluenciasAllR getInfluenciasRAllR = return Authorized
+    isAuthorized SuperAllR getSuperAllR = return Authorized
     
     isAuthorized InfluenciasR getInfluenciasR = ehAdmin
     isAuthorized SuperR getSuperR = ehAdmin

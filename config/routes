@@ -24,3 +24,4 @@
 
 /sugestao                   PainelR         GET
 /sugestao/#PlayerId         SugestaoR       GET POST
+/sugestoes/all              SugestoesAllR   GET

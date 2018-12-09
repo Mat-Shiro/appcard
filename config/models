@@ -19,8 +19,8 @@ Super json
 Sugestao json
     plaid       PlayerId
     nome        Text
-    ativa       Text Maybe
-    passiva     Text Maybe
+    ativa       Text
+    passiva     Text
     deriving Show
 
 Ranking json
