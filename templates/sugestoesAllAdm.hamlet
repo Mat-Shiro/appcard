@@ -11,11 +11,10 @@
             <th>
                 Passiva
     <tbody>
-        $forall (Entity sid sugestao) <- sugestoes
+        $forall (Entity sid sugestao, Entity _ player) <- sugestoes
             <tr>
                 <td>
-                    <a href="#">
-                        
+                    #{playerNome player}    
                 <td>
                     #{sugestaoNome sugestao}
                 <td>

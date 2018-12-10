@@ -90,7 +90,11 @@ getPainelR = do
                         
 getSugestoesAllR :: Handler Html
 getSugestoesAllR = do
-    sugestoes <- runDB $ selectList [] [Asc SugestaoId]
+    sugestoes <- runDB $ rawSql
+        "SELECT ??, ?? \
+        \FROM sugestao INNER JOIN player \
+        \ON sugestao.plaid=player.id"
+        []
     defaultLayout $ do
         addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         toWidget $(luciusFile "templates/sugestoesAllAdm.lucius")

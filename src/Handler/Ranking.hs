@@ -45,8 +45,6 @@ postRankR plaid = do
 
 getRankingR :: Handler Html
 getRankingR = do
-    --ranking <- runDB $ selectList [] [Asc RankingRank]
-    --player <- runDB $ selectList [] [Asc PlayerId]
     rankings <- runDB $ rawSql
         "SELECT ??, ?? \
         \FROM ranking INNER JOIN player \
