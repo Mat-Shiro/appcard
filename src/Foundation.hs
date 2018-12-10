@@ -29,24 +29,29 @@ type Form a = Html -> MForm Handler (FormResult a, Widget)
 instance Yesod App where
     makeLogger = return . appLogger
     authRoute _ = Just LoginR
-    isAuthorized HomeR _ = return Authorized
-    isAuthorized LoginR _ = return Authorized
-    isAuthorized PlayerR _ = return Authorized
-    isAuthorized PainelR getPainelR = return Authorized
-    isAuthorized InfluenciasAllR getInfluenciasRAllR = return Authorized
-    isAuthorized SuperAllR getSuperAllR = return Authorized
-    isAuthorized RankingR getRankingR = return Authorized
     
-    isAuthorized InfluenciasR getInfluenciasR = ehAdmin
-    isAuthorized SuperR getSuperR = ehAdmin
-    isAuthorized SugestoesAllR getSugestoesAllR = ehAdmin
-    isAuthorized (RankR _) _ = ehAdmin
     isAuthorized AdminR _ = ehAdmin
+    isAuthorized (ApagarR _) _ = ehAdmin
+    isAuthorized InfluenciasR _ = ehAdmin
+    isAuthorized SuperR _ = ehAdmin
+    isAuthorized (RankR _) _ = ehAdmin
+    isAuthorized SugestoesAllR getSugestoesAllR = ehAdmin
     
     isAuthorized (SugestaoR _) _ = ehPlayer
     
+    isAuthorized PlayerR _ = usuarioAnonimo
+    isAuthorized LoginR _ = usuarioAnonimo
+    
     isAuthorized LogoutR _ = usuarioLogado
-    isAuthorized _ _ = usuarioLogado
+    isAuthorized (SugestoesPlayerR _) _ = usuarioLogado
+    
+    isAuthorized HomeR _ = return Authorized
+    isAuthorized InfluenciasAllR _ = return Authorized
+    isAuthorized SuperAllR _ = return Authorized
+    isAuthorized RankingR getRankingR = return Authorized
+    isAuthorized PainelR getPainelR = return Authorized
+    
+    isAuthorized _ _ = return $ Unauthorized "Se você chegou aqui, parabéns."
     
 
 instance YesodPersist App where
@@ -75,7 +80,7 @@ ehAdmin = do
                         return Authorized
                     else 
                         return $ Unauthorized "Acesso negado!"
-                Nothing -> return AuthenticationRequired
+                Nothing -> return $ Unauthorized "Apenas administradores podem acessar esta área"
     
 
 ehPlayer :: Handler AuthResult
@@ -95,3 +100,14 @@ usuarioLogado = do
             case player of
                 Just _ -> return Authorized
                 Nothing -> return AuthenticationRequired
+                
+usuarioAnonimo :: Handler AuthResult
+usuarioAnonimo = do
+    admin <- lookupSession "_ADM"
+    case admin of
+        Just _ -> redirect HomeR
+        Nothing -> do
+            player <- lookupSession "_PLA"
+            case player of
+                Just _ -> redirect HomeR
+                Nothing -> return Authorized
