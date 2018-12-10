@@ -42,8 +42,12 @@
                 <button class="btn btn-sm btn-outline-secondary" type="submit">Logout
 
 <div class="jumbotron">
-    Rankeando Player #{playerNome player}
-    <form action=@{RankR plaid} method=post enctype=#{enctype}>
+    <h3>
+        Rankeando Player #{playerNome player}
+    
+    <br>
+    
+    <form action=@{RankR plaid} method="post" enctype=#{enctype}>
         ^{widgetForm}
         <input type="submit" value=_{MsgSend}>
 

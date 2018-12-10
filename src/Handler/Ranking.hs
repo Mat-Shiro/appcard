@@ -31,17 +31,32 @@ getRankR plaid = do
 
 postRankR :: PlayerId -> Handler Html
 postRankR plaid = do
-    -- LE O DIGITADO
-    ((res,_),_) <- runFormPost (formRank plaid)
-    case res of
-        FormSuccess rank -> do
-            -- INSERE O PRODUTO
-            rid <- runDB $ insert rank
-            setMessage [shamlet|
-                Player Rankeado com sucesso!
-            |]
-            redirect HomeR
-        _ -> redirect HomeR
+    ranking <- runDB $ selectFirst [RankingPlaid ==. plaid] []
+    case ranking of
+        Just (Entity ranid _) -> do
+            -- LE O DIGITADO
+            ((res,_),_) <- runFormPost (formRank plaid)
+            case res of
+                FormSuccess rank -> do
+                    -- INSERE O PRODUTO
+                    runDB $ replace ranid rank
+                    setMessage [shamlet|
+                        Player Rankeado com sucesso!
+                    |]
+                    redirect HomeR
+                _ -> redirect HomeR
+        Nothing -> do
+            -- LE O DIGITADO
+            ((res,_),_) <- runFormPost (formRank plaid)
+            case res of
+                FormSuccess rank -> do
+                    -- INSERE O PRODUTO
+                    rid <- runDB $ insert rank
+                    setMessage [shamlet|
+                        Player Rankeado com sucesso!
+                    |]
+                    redirect HomeR
+                _ -> redirect HomeR
 
 getRankingR :: Handler Html
 getRankingR = do
