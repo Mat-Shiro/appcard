@@ -102,8 +102,25 @@ getSugestoesAllR = do
         
 getSugestoesPlayerR :: PlayerId -> Handler Html
 getSugestoesPlayerR plaid = do
-    sugestoes <- runDB $ selectList [SugestaoPlaid ==. plaid] [Desc SugestaoId]
-    defaultLayout $ do
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        toWidget $(luciusFile "templates/sugestoesAllPlayer.lucius")
-        $(whamletFile "templates/sugestoesAllPlayer.hamlet")
+    usuario <- runDB $ selectFirst [PlayerId ==. plaid] []
+    case usuario of
+        Just (Entity pid player) -> do
+            logado <- lookupSession "_PLA"
+            case logado of 
+                Just sessionPlayer -> do 
+                    dados <- return $ read $ unpack sessionPlayer
+                    if (playerEmail player) == (playerEmail dados) then do
+                        sugestoes <- runDB $ selectList [SugestaoPlaid ==. plaid] [Desc SugestaoId]
+                        defaultLayout $ do
+                            addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                            toWidget $(luciusFile "templates/sugestoesAllPlayer.lucius")
+                            $(whamletFile "templates/sugestoesAllPlayer.hamlet")
+                    else
+                        redirect HomeR
+                Nothing -> do
+                    sugestoes <- runDB $ selectList [SugestaoPlaid ==. plaid] [Desc SugestaoId]
+                    defaultLayout $ do
+                        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                        toWidget $(luciusFile "templates/sugestoesAllPlayer.lucius")
+                        $(whamletFile "templates/sugestoesAllPlayer.hamlet")
+        Nothing -> return notFound ""

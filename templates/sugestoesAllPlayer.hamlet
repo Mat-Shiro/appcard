@@ -1,5 +1,6 @@
+Mostrando sugestoes de #{playerNome player}
 <div class="jumbotron">
-    <table class="table table-stripped">
+    <table class="table">
     <thead>
         <tr>
             <th>
