@@ -23,5 +23,5 @@ getAdminR = do
 
 postApagarR :: PlayerId -> Handler Html
 postApagarR plaid = do 
-    runDB $ delete plaid
+    runDB $ deleteCascade plaid
     redirect AdminR
