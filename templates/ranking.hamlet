@@ -10,12 +10,12 @@ ATUALIZAR
                 <th>
                     Pontos
     <tbody>
-        $forall (Entity rid rank) <- ranking
+        $forall (Entity rid rank, Entity _ player) <- rankings
             <tr>
                 <td>
                     #{rankingRank rank}º Lugar
                 <td>
-                    #{fromSqlKey $ rankingPlaid rank}
+                    #{playerNome player}
                 <td>
                     #{rankingPontos rank}
 

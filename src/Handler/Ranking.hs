@@ -45,7 +45,13 @@ postRankR plaid = do
 
 getRankingR :: Handler Html
 getRankingR = do
-    ranking <- runDB $ selectList [] [Asc RankingRank]
+    --ranking <- runDB $ selectList [] [Asc RankingRank]
+    --player <- runDB $ selectList [] [Asc PlayerId]
+    rankings <- runDB $ rawSql
+        "SELECT ??, ?? \
+        \FROM ranking INNER JOIN player \
+        \ON ranking.plaid=player.id"
+        []
     defaultLayout $ do
         addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         toWidget $(luciusFile "templates/ranking.lucius")
