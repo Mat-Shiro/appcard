@@ -43,6 +43,8 @@ instance Yesod App where
     isAuthorized (RankR _) _ = ehAdmin
     isAuthorized AdminR _ = ehAdmin
     
+    isAuthorized (SugestaoR _) _ = ehPlayer
+    
     isAuthorized LogoutR _ = usuarioLogado
     isAuthorized _ _ = usuarioLogado
     
@@ -81,7 +83,7 @@ ehPlayer = do
     logado <- lookupSession "_PLA"
     case logado of
         Just _ -> return Authorized
-        Nothing -> return AuthenticationRequired
+        Nothing -> return $ Unauthorized "Apenas players podem enviar sugestões"
         
 usuarioLogado :: Handler AuthResult
 usuarioLogado = do

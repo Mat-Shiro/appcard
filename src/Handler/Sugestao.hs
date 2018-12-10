@@ -21,16 +21,26 @@ formSugestao plaid = renderBootstrap $ Sugestao plaid
     <*> areq textField "Ação Ativa: " Nothing
     <*> areq textField "Ação Passiva: " Nothing
     
-getSugestaoR :: PlayerId -> Handler Html
+--getSugestaoR :: PlayerId -> Handler Html
 getSugestaoR plaid = do
     -- GERA O FORMULARIO NA widgetForm
-    player <- runDB $ get404 plaid
-    (widgetForm, enctype) <- generateFormPost (formSugestao plaid)
-    defaultLayout $ do
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        toWidget $(luciusFile "templates/sugestao.lucius")
-        $(whamletFile "templates/sugestao.hamlet")
-    
+    usuario <- runDB $ selectFirst [PlayerId ==. plaid] []
+    case usuario of
+        Just (Entity pid player) -> do
+            logado <- lookupSession "_PLA"
+            case logado of 
+                Just sessionPlayer -> do 
+                    dados <- return $ read $ unpack sessionPlayer
+                    if (playerEmail player) == (playerEmail dados) then do
+                        (widgetForm, enctype) <- generateFormPost (formSugestao plaid)
+                        defaultLayout $ do
+                            addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                            toWidget $(luciusFile "templates/sugestao.lucius")
+                            $(whamletFile "templates/sugestao.hamlet")
+                    else
+                        redirect HomeR
+        Nothing -> return notFound ""
+        
 postSugestaoR :: PlayerId -> Handler Html
 postSugestaoR plaid = do
     -- LE O DIGITADO
