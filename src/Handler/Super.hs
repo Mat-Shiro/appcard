@@ -13,9 +13,6 @@ import Import
 widgetBootstrapTheme :: Widget
 widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
 
-widgetBootstrapLinks :: Widget
-widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
-
 formSuper :: Form Super
 formSuper = renderBootstrap $ Super
     <$> areq textField "Nome: " Nothing
@@ -45,7 +42,8 @@ postSuperR = do
 getSuperAllR :: Handler Html
 getSuperAllR = do
     supers <- runDB $ selectList [] [Asc SuperNome]
+    admin <- lookupSession "_ADM"
     defaultLayout $ do
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle "Gamble: The Game | Super Influências"
         toWidget $(luciusFile "templates/superAll.lucius")
         $(whamletFile "templates/superAll.hamlet")

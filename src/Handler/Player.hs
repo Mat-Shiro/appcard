@@ -10,8 +10,8 @@ import Text.Lucius
 import Text.Julius
 import Import
 
-widgetBootstrapLinks :: Widget
-widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
+widgetBootstrapTheme :: Widget
+widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
 
 formPlayer :: Form (Player,Text)
 formPlayer = renderBootstrap $ (,) 
@@ -27,7 +27,7 @@ getPlayerR = do
     (widgetForm, enctype) <- generateFormPost formPlayer
     mensagem <- getMessage
     defaultLayout $ do 
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle "Gamble: The Game | Cadastro"
         toWidget $(luciusFile "templates/player.lucius")
         $(whamletFile "templates/player.hamlet")
     
@@ -46,7 +46,7 @@ postPlayerR = do
             else do 
                 setMessage [shamlet|
                     <h1>
-                        Senha e confirmacao não conferem
+                        Senha e confirmação não batem!
                 |]
                 redirect PlayerR
         _ -> redirect PlayerR

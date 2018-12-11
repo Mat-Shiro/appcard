@@ -11,8 +11,8 @@ import Text.Julius
 import Import
 import Database.Persist.Sql
 
-widgetBootstrapLinks :: Widget
-widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
+widgetBootstrapTheme :: Widget
+widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
 
 formLogin :: Form (Text,Text)
 formLogin = renderBootstrap $ (,) 
@@ -24,7 +24,7 @@ getLoginR = do
     (widgetForm, enctype) <- generateFormPost formLogin
     mensagem <- getMessage
     defaultLayout $ do 
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle "Gamble: The Game | Cadastro"
         toWidget $(luciusFile "templates/login.lucius")
         $(whamletFile "templates/login.hamlet")
     

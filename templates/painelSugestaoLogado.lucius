@@ -1,3 +1,9 @@
 .jumbotron {
   margin-top: 25px;
 }
+
+.card-header,
+.card-title,
+.card-text{
+  color: black;
+}

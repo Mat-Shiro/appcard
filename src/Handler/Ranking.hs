@@ -14,9 +14,6 @@ import Database.Persist.Sql
 widgetBootstrapTheme :: Widget
 widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
 
-widgetBootstrapLinks :: Widget
-widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
-
 formRank :: PlayerId -> Form Ranking
 formRank plaid = renderBootstrap $ Ranking plaid
     <$> areq intField "Rank: " Nothing
@@ -69,7 +66,8 @@ getRankingR = do
         \FROM ranking INNER JOIN player \
         \ON ranking.plaid=player.id"
         []
+    admin <- lookupSession "_ADM"
     defaultLayout $ do
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle "Gamble: The Game | Ranking de Jogadores"
         toWidget $(luciusFile "templates/ranking.lucius")
         $(whamletFile "templates/ranking.hamlet")

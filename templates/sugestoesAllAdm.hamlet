@@ -48,12 +48,9 @@
               <a class="nav-link" href=@{PainelR}>
                   Sugestões
                   
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item">
+              <a class="nav-link" href=@{RankingR}>
                   Ranking
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href=@{AdminR}>Atualizar Ranking
-                <a class="dropdown-item" href=@{RankingR}>Listar Ranks
                 
     <table class="table">
        <thead>
@@ -79,4 +76,4 @@
                     <td>
                         #{sugestaoPassiva sugestao}
 
-^{widgetBootstrapLinks}
+^{widgetBootstrapTheme}

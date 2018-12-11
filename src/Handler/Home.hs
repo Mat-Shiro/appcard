@@ -9,11 +9,9 @@ module Handler.Home where
 import Text.Lucius
 import Text.Julius
 import Import
-import Prelude (read)
-import Database.Persist.Sql
 
-widgetBootstrapLinks :: Widget
-widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
+widgetBootstrapTheme :: Widget
+widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
 
 getHomeR :: Handler Html
 getHomeR = do 
@@ -21,7 +19,7 @@ getHomeR = do
     admin <- lookupSession "_ADM"
     logado <- lookupSession "_PLA"
     defaultLayout $ do 
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle "Gamble: The Game | Página Inicial"
         toWidgetHead $(juliusFile "templates/home.julius")
         toWidget $(luciusFile "templates/home.lucius")
         $(whamletFile "templates/home.hamlet")

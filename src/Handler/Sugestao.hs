@@ -15,9 +15,6 @@ import Database.Persist.Sql
 widgetBootstrapTheme :: Widget
 widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
 
-widgetBootstrapLinks :: Widget
-widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
-
 formSugestao :: PlayerId -> Form Sugestao
 formSugestao plaid = renderBootstrap $ Sugestao plaid
     <$> areq textField "Nome: " Nothing
@@ -64,7 +61,7 @@ getPainelR = do
     case admin of
         Just _ -> do 
             defaultLayout $ do 
-                addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                setTitle "Gamble: The Game | Sugestões"
                 toWidget $(luciusFile "templates/painelSugestaoAdm.lucius")
                 $(whamletFile "templates/painelSugestaoAdm.hamlet")
         Nothing -> do
@@ -77,17 +74,17 @@ getPainelR = do
                         Just (Entity plaid _) -> do
                             pid <- return $ plaid
                             defaultLayout $ do 
-                                addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                                setTitle "Gamble: The Game | Sugestões"
                                 toWidget $(luciusFile "templates/painelSugestaoLogado.lucius")
                                 $(whamletFile "templates/painelSugestaoLogado.hamlet")
                         Nothing -> do
                             defaultLayout $ do 
-                                addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                                setTitle "Gamble: The Game | Sugestões"
                                 toWidget $(luciusFile "templates/painelSugestao.lucius")
                                 $(whamletFile "templates/painelSugestao.hamlet")
                 Nothing -> do
                     defaultLayout $ do 
-                        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                        setTitle "Gamble: The Game | Sugestões"
                         toWidget $(luciusFile "templates/painelSugestao.lucius")
                         $(whamletFile "templates/painelSugestao.hamlet")
                         

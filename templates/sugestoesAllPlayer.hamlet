@@ -34,26 +34,29 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Influências
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href=@{InfluenciasR}>Cadastrar Influência
-                <a class="dropdown-item" href=@{InfluenciasAllR}>Listar Influências
+                $maybe _ <- logado
+                    <a class="dropdown-item" href=@{InfluenciasAllR}>Listar Influências
+                $nothing
+                    <a class="dropdown-item" href=@{InfluenciasR}>Cadastrar Influência
+                    <a class="dropdown-item" href=@{InfluenciasAllR}>Listar Influências
                 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Super Influências
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href=@{SuperR}>Cadastrar Influência
-                <a class="dropdown-item" href=@{SuperAllR}>Listar Super Influências
+                  $maybe _ <- logado
+                      <a class="dropdown-item" href=@{SuperAllR}>Listar Super Influências
+                  $nothing
+                      <a class="dropdown-item" href=@{SuperR}>Cadastrar Influência
+                      <a class="dropdown-item" href=@{SuperAllR}>Listar Super Influências
                   
             <li class="nav-item">
               <a class="nav-link" href=@{PainelR}>
                   Sugestões
                   
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item">
+              <a class="nav-link" href=@{RankingR}>
                   Ranking
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href=@{AdminR}>Atualizar Ranking
-                <a class="dropdown-item" href=@{RankingR}>Listar Ranks
                 
     <table class="table">
        <thead>
@@ -74,4 +77,4 @@
                     <td>
                         #{sugestaoPassiva sugestao}
 
-^{widgetBootstrapLinks}
+^{widgetBootstrapTheme}

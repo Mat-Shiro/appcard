@@ -5,3 +5,13 @@
 #signin {
   margin-right: 5px;
 }
+
+.card-header {
+  color: #fff;
+}
+
+.card-header,
+.card-title,
+.card-text{
+  color: black;
+}

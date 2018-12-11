@@ -13,9 +13,6 @@ import Import
 widgetBootstrapTheme :: Widget
 widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
 
-widgetBootstrapLinks :: Widget
-widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
-
 formInfluencias :: Form Influencias
 formInfluencias = renderBootstrap $ Influencias
     <$> areq textField "Nome: " Nothing
@@ -45,7 +42,8 @@ postInfluenciasR = do
 getInfluenciasAllR :: Handler Html
 getInfluenciasAllR = do
     influencias <- runDB $ selectList [] [Asc InfluenciasNome]
+    admin <- lookupSession "_ADM"
     defaultLayout $ do
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle "Gamble: The Game | Influências"
         toWidget $(luciusFile "templates/influenciasAll.lucius")
         $(whamletFile "templates/influenciasAll.hamlet")
