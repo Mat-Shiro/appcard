@@ -10,6 +10,9 @@ import Text.Lucius
 import Text.Julius
 import Import
 
+widgetBootstrapTheme :: Widget
+widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
+
 widgetBootstrapLinks :: Widget
 widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
 
@@ -24,7 +27,7 @@ getInfluenciasR = do
     -- GERA O FORMULARIO NA widgetForm
     (widgetForm, enctype) <- generateFormPost formInfluencias
     defaultLayout $ do
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle "Gamble: The Game | Cadastro de Influência"
         toWidget $(luciusFile "templates/influencias.lucius")
         $(whamletFile "templates/influencias.hamlet")
     

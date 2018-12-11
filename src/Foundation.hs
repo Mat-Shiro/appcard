@@ -45,6 +45,7 @@ instance Yesod App where
     isAuthorized LogoutR _ = usuarioLogado
     isAuthorized (SugestoesPlayerR _) _ = usuarioLogado
     
+    isAuthorized (StaticR _) _ = return Authorized
     isAuthorized HomeR _ = return Authorized
     isAuthorized InfluenciasAllR _ = return Authorized
     isAuthorized SuperAllR _ = return Authorized

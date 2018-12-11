@@ -11,14 +11,14 @@ import Text.Lucius
 import Text.Julius
 import Database.Persist.Sql
 
-widgetBootstrapLinks :: Widget
-widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
+widgetBootstrapTheme :: Widget
+widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
 
 getAdminR :: Handler Html   
 getAdminR = do 
     players <- runDB $ selectList [] [Asc PlayerNome]
     defaultLayout $ do 
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle "Gamble: The Game | Painel Admin"
         $(whamletFile "templates/admin.hamlet")
 
 postApagarR :: PlayerId -> Handler Html

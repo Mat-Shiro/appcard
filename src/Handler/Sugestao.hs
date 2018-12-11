@@ -12,6 +12,9 @@ import Import
 import Prelude (read)
 import Database.Persist.Sql
 
+widgetBootstrapTheme :: Widget
+widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
+
 widgetBootstrapLinks :: Widget
 widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
 
@@ -21,7 +24,7 @@ formSugestao plaid = renderBootstrap $ Sugestao plaid
     <*> areq textField "Ação Ativa: " Nothing
     <*> areq textField "Ação Passiva: " Nothing
     
---getSugestaoR :: PlayerId -> Handler Html
+getSugestaoR :: PlayerId -> Handler Html
 getSugestaoR plaid = do
     -- GERA O FORMULARIO NA widgetForm
     usuario <- runDB $ selectFirst [PlayerId ==. plaid] []
@@ -34,7 +37,7 @@ getSugestaoR plaid = do
                     if (playerEmail player) == (playerEmail dados) then do
                         (widgetForm, enctype) <- generateFormPost (formSugestao plaid)
                         defaultLayout $ do
-                            addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                            setTitle "Gamble: The Game | Envio de Sugestão"
                             toWidget $(luciusFile "templates/sugestao.lucius")
                             $(whamletFile "templates/sugestao.hamlet")
                     else
@@ -96,7 +99,7 @@ getSugestoesAllR = do
         \ON sugestao.plaid=player.id"
         []
     defaultLayout $ do
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle "Gamble: The Game | Sugestões dos Players"
         toWidget $(luciusFile "templates/sugestoesAllAdm.lucius")
         $(whamletFile "templates/sugestoesAllAdm.hamlet")
         
@@ -112,7 +115,7 @@ getSugestoesPlayerR plaid = do
                     if (playerEmail player) == (playerEmail dados) then do
                         sugestoes <- runDB $ selectList [SugestaoPlaid ==. plaid] [Desc SugestaoId]
                         defaultLayout $ do
-                            addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                            setTitle "Gamble: The Game | Visualizando suas sugestões"
                             toWidget $(luciusFile "templates/sugestoesAllPlayer.lucius")
                             $(whamletFile "templates/sugestoesAllPlayer.hamlet")
                     else
@@ -120,7 +123,7 @@ getSugestoesPlayerR plaid = do
                 Nothing -> do
                     sugestoes <- runDB $ selectList [SugestaoPlaid ==. plaid] [Desc SugestaoId]
                     defaultLayout $ do
-                        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+                        setTitle $ toHtml $ "Gamble: The Game | Visualizando sugestões de " ++ (playerNome player)
                         toWidget $(luciusFile "templates/sugestoesAllPlayer.lucius")
                         $(whamletFile "templates/sugestoesAllPlayer.hamlet")
         Nothing -> return notFound ""

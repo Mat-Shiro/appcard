@@ -6,10 +6,13 @@
 {-# LANGUAGE QuasiQuotes #-}
 module Handler.Ranking where
 
-import Import
 import Text.Lucius
 import Text.Julius
+import Import
 import Database.Persist.Sql
+
+widgetBootstrapTheme :: Widget
+widgetBootstrapTheme = $(whamletFile "templates/bootstrapTheme.hamlet")
 
 widgetBootstrapLinks :: Widget
 widgetBootstrapLinks = $(whamletFile "templates/bootstrapLinks.hamlet")
@@ -23,9 +26,10 @@ getRankR :: PlayerId -> Handler Html
 getRankR plaid = do
     -- GERA O FORMULARIO NA widgetForm
     player <- runDB $ get404 plaid
+    titulo <- return $ toHtml $ "Gamble: The Game | Rankeando jogador " ++ (playerNome player)
     (widgetForm, enctype) <- generateFormPost (formRank plaid)
     defaultLayout $ do
-        addStylesheetRemote "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        setTitle titulo
         toWidget $(luciusFile "templates/rank.lucius")
         $(whamletFile "templates/rank.hamlet")
 
