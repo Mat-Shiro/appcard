@@ -24,7 +24,7 @@ getLoginR = do
     (widgetForm, enctype) <- generateFormPost formLogin
     mensagem <- getMessage
     defaultLayout $ do 
-        setTitle "Gamble: The Game | Cadastro"
+        setTitle "Gamble: The Game | Login"
         toWidget $(luciusFile "templates/login.lucius")
         $(whamletFile "templates/login.hamlet")
     

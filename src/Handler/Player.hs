@@ -38,11 +38,7 @@ postPlayerR = do
         FormSuccess (player,confirmacao) -> do
             if (playerSenha player == confirmacao) then do 
                 runDB $ insert player
-                setMessage [shamlet|
-                    <h1>
-                        Player cadastrado
-                |]
-                redirect HomeR
+                redirect LoginR
             else do 
                 setMessage [shamlet|
                     <h1>

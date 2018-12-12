@@ -64,7 +64,8 @@ getRankingR = do
     rankings <- runDB $ rawSql
         "SELECT ??, ?? \
         \FROM ranking INNER JOIN player \
-        \ON ranking.plaid=player.id"
+        \ON ranking.plaid=player.id \
+        \ORDER BY ranking.rank ASC"
         []
     admin <- lookupSession "_ADM"
     defaultLayout $ do
